@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            document.addEventListener('DOMContentLoaded', () =>
+                fetch('db.json')
+                    .then(response => response.json())
+                    .then(db => {
+                        let path = location.pathname.split("/");
+                        let id = path[path.length - 1];
+                        let url = db[id];
+                        if (url) {
+                            window.location = url;
+                        } else {
+                            document.body.innerText = "Invalid URL";
+                        }
+                    })
+                    .catch(console.error)
+            );
+        </script>
+    </head>
+    <body></body>
+</html>
